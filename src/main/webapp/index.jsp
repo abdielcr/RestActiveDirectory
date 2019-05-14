@@ -2,7 +2,9 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> 
+
+<html class="no-js"> <!--<![endif]-->
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,6 +17,7 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="shortcut icon" href="favicon.ico">
 	<%@ page import= "com.telnor.reset.login.rest.CambioPass" %>
+
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/animate.css">
@@ -23,13 +26,27 @@
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	
+	<!-- Google reCaptcha -->
+	 <script src="https://www.google.com/recaptcha/api.js" async defer>
+	 
+	 </script>
+	 <style>
+    /* already defined in bootstrap4 */
+    .text-xs-center {
+        text-align: center;
+    }
+
+    .g-recaptcha {
+        display: inline-block;
+    }
+</style>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>1
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 	</head>
 	<body>
-
+	 
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-4">
@@ -51,14 +68,31 @@
 							<label for="password" class="sr-only">Password_repite_contraseña</label>
 							<input type="password" class="form-control" id="repeatpassword" name="repeatpassword" required placeholder="CONFIRMA CONTRASEÑA" autocomplete="off">
 						</div>
-						<div class="form-group">
-							<input type="submit" value="RESTABLECER" class="btn btn-primary">
+						
+						<div class="text-xs-center">
+							<div class="g-recaptcha" data-sitekey="6LeuHKMUAAAAAILhcdxRmYbrKQSebuko8ihfiOqj" data-callback="recaptcha_callback" style="text-aling:center">
+							</div>
+						</div>
+						<br>
+						<div class="text-xs-center">
+						<div class="form-group" id="btn">
+							<input type="submit" value="RESTABLECER" class="btn btn-primary" id="button1" 
+							style="display:none;margin-left: auto;margin-right: auto;">
+						</div>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
-
+	
+	<!-- Captcha Google JS Implementation -->
+	<script type="text/javascript">
+		function recaptcha_callback() {
+      	document.getElementById("button1").style.display = "block"
+		};                                 
+	</script>
+	
+	
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- Bootstrap -->

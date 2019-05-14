@@ -31,7 +31,7 @@ public class CambioPass {
 		 HttpResponse response = client.execute(post);
 		 BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 		 String line = "";
-		
+	
 		 while ((line = rd.readLine()) != null) {
 			 
 			//Convertimos a JSONObject 
@@ -41,9 +41,13 @@ public class CambioPass {
 			
 			//Manejo de los distintos tipos de codigos.
 			if(codigo.toString().equals("-11")) {
+				String url1 = "http://localhost:8080/AgilSinLonginSae/usuarioPassError.jsp";
 				if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-				    Desktop.getDesktop().browse(new URI("http://localhost:8080/AgilSinLonginSae/usuarioPassError.jsp"));
+				    Desktop.getDesktop().browse(new URI(url1));
 				}	
+				
+				System.out.println("Esta weba si esta jalando a qui!!! ALV");
+				
 			}
 			else if(codigo.toString().equals("-12")){
 				if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {

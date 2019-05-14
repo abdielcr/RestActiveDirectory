@@ -7,6 +7,8 @@
 	String pass        =(String)request.getParameter("password");
 	String newPass     =(String)request.getParameter("newPassword");
 	
+	System.out.println("Tu usuarios es"+"["+usuario+"]"+ "Tu contraseña Anterior es"+"["+pass+"]"+ "Tu nueva Contraseña sera"+ "["+newPass+"]");
+	
 	String url = "{\"user\": \""+usuario+"\",\"password\": \""+pass+"\",\"newPassword\": \""+newPass+"\"}";
 	 		
 	CambioPass cambioPassword = new CambioPass();
